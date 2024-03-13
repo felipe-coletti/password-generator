@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de senha</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <main>
+        <div id="container">
+            <h1 id="primary-title">Gerador de senha</h1>
+            <div id="content-area">
+                <div id="input-field">
+                    <label id="label" for="input">Número de caracteres</label>
+                    <input id="input" type="number" min="1" onkeyup="formatNumber()"/>
+                </div>
+                <div class="checkbox-field">
+                    <input id="contain-uppercase-letters" class="checkbox" type="checkbox">
+                    <label id="label" for="contain-uppercase-letters">Incluir letras maiúsculas</label>
+                </div>
+                <div  class="checkbox-field">
+                    <input id="contain-lowercase-letters" class="checkbox" type="checkbox">
+                    <label id="label" for="contain-lowercase-letters">Incluir letras minúsculas</label>
+                </div>
+                <div  class="checkbox-field">
+                    <input id="contain-numbers" class="checkbox" type="checkbox">
+                    <label id="label" for="contain-numbers">Incluir números</label>
+                </div>
+                <div  class="checkbox-field">
+                    <input id="contain-special-characters" class="checkbox" type="checkbox">
+                    <label id="label" for="contain-special-characters">Incluir caracteres especiais</label>
+                </div>
+                <button id="button" onclick="getPassword()">Gerar senha</button>
+            </div>
+            <div id="result-area">
+                <h2 id="secondary-title">Senha gerada</h2>
+                <p id="result"></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
