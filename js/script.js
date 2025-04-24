@@ -45,10 +45,10 @@ const generatePassword = (length) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
+    const length = parseInt(passwordLengthInput.value)
+
     const resultElement = document.getElementById('result')
     const resultArea = document.getElementById('result-area')
-
-    const length = parseInt(passwordLengthInput.value)
 
     if (
         length >= 1 &&
