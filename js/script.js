@@ -33,6 +33,7 @@ const generatePassword = (length) => {
     if (validCharacters.length === 0) return ''
 
     let password = ''
+    
     for (let i = 0; i < length; i++) {
         const randomIndex = Math.floor(Math.random() * validCharacters.length)
         password += validCharacters[randomIndex]
