@@ -1,50 +1,65 @@
-const formatNumber = () => {
-    number = document.getElementById("input").value.replace(/[^1-9]/g, "")
+const form = document.getElementById('form')
+const passwordLengthInput = document.getElementById('input')
+const containUppercaseLetters = document.getElementById('contain-uppercase-letters')
+const containLowercaseLetters = document.getElementById('contain-lowercase-letters')
+const containNumbers = document.getElementById('contain-numbers')
+const containSpecialCharacters = document.getElementById('contain-special-characters')
 
-    document.getElementById("input").value = number
-}
+passwordLengthInput.addEventListener('keyup', () => {
+    passwordLengthInput.value = passwordLengthInput.value.replace(/\D/g, '')
+})
 
-const generatePassword = () => {
-    uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    specialCharacters = ["'", "\"", "!", "@", "#", "$", "%", "&", "*", "(", ")", "-", "_", "=", "+", "`", "[", "{", "~", "^", "]", "}", "\\", "|", ",", "<", ".", ">", ";", ":", "/", "?"]
+const generatePassword = (length) => {
+    const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+    const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    const numbers = '0123456789'.split('')
+    const specialCharacters = `'"!@#$%&*()-_=+\`[{\~^]}\\|,<.>;:/?`.split('')
 
-    content = [
-        document.getElementById("contain-uppercase-letters").checked,
-        document.getElementById("contain-lowercase-letters").checked,
-        document.getElementById("contain-numbers").checked,
-        document.getElementById("contain-special-characters").checked
+    const characterTypes = [
+        { checked: containUppercaseLetters.checked, characters: uppercaseLetters },
+        { checked: containLowercaseLetters.checked, characters: lowercaseLetters },
+        { checked: containNumbers.checked, characters: numbers },
+        { checked: containSpecialCharacters.checked, characters: specialCharacters },
     ]
 
-    characterTypes = [uppercaseLetters, lowercaseLetters, numbers, specialCharacters]
+    let validCharacters = []
 
-    characters = []
-
-    for (let i = 0; i < content.length; i++) {
-        if (content[i] == true) {
-            characters = characters.concat(characterTypes[i])
+    characterTypes.forEach((type) => {
+        if (type.checked) {
+            validCharacters = validCharacters.concat(type.characters)
         }
-    }
- 
-    password = ""
+    })
 
-    for (let i = 0; i < document.getElementById("input").value; i++) {
-        password += characters[Math.floor(Math.random() * characters.length)]
+    if (validCharacters.length === 0) return ''
+
+    let password = ''
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * validCharacters.length)
+        password += validCharacters[randomIndex]
     }
 
     return password
 }
 
-const getPassword = () => {
-    if (document.getElementById("input").value >= 1){
-        if (document.getElementById("contain-uppercase-letters").checked == true || document.getElementById("contain-lowercase-letters").checked == true || document.getElementById("contain-numbers").checked == true || document.getElementById("contain-special-characters").checked == true) {
-            document.getElementById("result").innerHTML = generatePassword()
-            document.getElementById("result-area").style.display = "flex";
-        } else {
-            document.getElementById("result-area").style.display = "none";
-        }
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const resultElement = document.getElementById('result')
+    const resultArea = document.getElementById('result-area')
+
+    const length = parseInt(passwordLengthInput.value)
+
+    if (
+        length >= 1 &&
+        (containUppercaseLetters.checked ||
+            containLowercaseLetters.checked ||
+            containNumbers.checked ||
+            containSpecialCharacters.checked)
+    ) {
+        resultElement.innerHTML = generatePassword(length)
+        resultArea.style.display = 'flex'
     } else {
-        document.getElementById("result-area").style.display = "none";
+        resultElement.innerHTML = ''
+        resultArea.style.display = 'none'
     }
-}
+})
