@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Gerador de senha</title>
-        <link rel="stylesheet" href="css/style.css" />
-        <script src="js/script.js" defer></script>
-    </head>
-    <body>
-        <main id="main">
-            <div id="container">
-                <h1 id="primary-title">Gerador de senha</h1>
-                <form id="form">
-                    <label id="label">
-                        Número de caracteres
-                        <input id="input" type="number" min="1" />
-                    </label>
-                    <label class="inline-label">
-                        <input type="checkbox" id="contain-uppercase-letters" />
-                        Incluir letras maiúsculas
-                    </label>
-                    <label class="inline-label">
-                        <input type="checkbox" id="contain-lowercase-letters" />
-                        Incluir letras minúsculas
-                    </label>
-                    <label class="inline-label">
-                        <input type="checkbox" id="contain-numbers" />
-                        Incluir números
-                    </label>
-                    <label class="inline-label">
-                        <input type="checkbox" id="contain-special-characters" />
-                        Incluir caracteres especiais
-                    </label>
-                    <button type="submit" id="button">Gerar senha</button>
-                </form>
-                <div id="result-area">
-                    <h2 id="secondary-title">Senha gerada</h2>
-                    <p id="result"></p>
-                </div>
-            </div>
-        </main>
-    </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE-edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Gerador de senha</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="module" src="js/main.js" defer></script>
+	</head>
+	<body>
+		<main id="main">
+			<div id="container">
+				<h1 id="primary-title">Gerador de senha</h1>
+				<form id="form">
+					<label id="label">
+						Número de caracteres
+						<input id="input" type="number" min="1" />
+					</label>
+					<label class="inline-label">
+						<input type="checkbox" id="contain-uppercase-letters" />
+						Incluir letras maiúsculas
+					</label>
+					<label class="inline-label">
+						<input type="checkbox" id="contain-lowercase-letters" />
+						Incluir letras minúsculas
+					</label>
+					<label class="inline-label">
+						<input type="checkbox" id="contain-numbers" />
+						Incluir números
+					</label>
+					<label class="inline-label">
+						<input type="checkbox" id="contain-special-characters" />
+						Incluir caracteres especiais
+					</label>
+					<button type="submit" id="button">Gerar senha</button>
+				</form>
+				<div id="result-area">
+					<h2 id="secondary-title">Senha gerada</h2>
+					<p id="result"></p>
+				</div>
+			</div>
+		</main>
+	</body>
 </html>
