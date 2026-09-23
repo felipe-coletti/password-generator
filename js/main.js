@@ -30,9 +30,9 @@ form.addEventListener('submit', e => {
 		const password = generatePassword(length, options)
 
 		resultElement.textContent = password
-		resultArea.hidden = true
+		resultArea.hidden = false
 	} else {
 		resultElement.textContent = ''
-		resultArea.hidden = false
+		resultArea.hidden = true
 	}
 })
