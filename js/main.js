@@ -30,9 +30,9 @@ form.addEventListener('submit', e => {
 		const password = generatePassword(length, options)
 
 		resultElement.innerHTML = password
-		resultArea.style.display = 'flex'
+		resultArea.hidden = true
 	} else {
 		resultElement.innerHTML = ''
-		resultArea.style.display = 'none'
+		resultArea.hidden = false
 	}
 })
