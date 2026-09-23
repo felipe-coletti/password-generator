@@ -29,10 +29,10 @@ form.addEventListener('submit', e => {
 	if (length >= 1 && Object.values(options).some(v => v)) {
 		const password = generatePassword(length, options)
 
-		resultElement.innerHTML = password
+		resultElement.textContent = password
 		resultArea.hidden = true
 	} else {
-		resultElement.innerHTML = ''
+		resultElement.textContent = ''
 		resultArea.hidden = false
 	}
 })
